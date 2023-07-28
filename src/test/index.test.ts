@@ -1,14 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { isEmail, statusFactory } from '..';
+import { isEmail, statusAdapter } from '..';
 
-describe('test statusFactory', () => {
+describe('test statusAdapter', () => {
   it('render status', () => {
     const status = {
       1: 'yes',
       2: 'no',
     } as const;
 
-    const render = statusFactory(status);
+    const render = statusAdapter(status);
     expect(render(1)).toStrictEqual('yes');
     expect(render(2)).toStrictEqual('no');
     expect(render('yes')).toStrictEqual(1);
@@ -30,8 +30,8 @@ describe('test statusFactory', () => {
       C: 3,
     };
 
-    // 创建statusFactory实例
-    const getStatus = statusFactory(initStatus);
+    // 创建statusAdapter实例
+    const getStatus = statusAdapter(initStatus);
 
     // @ts-ignore
     getStatus('E');

@@ -9,7 +9,7 @@
  *    2: 'no'
  *  } as const // 必须作为只读对象处理
  *
- *  const render = statusFactory(statusObject);
+ *  const render = statusAdapter(statusObject);
  *
  *  render(1) // ‘yes’
  *  render(2) // ‘no’
@@ -19,7 +19,7 @@
  *  render('hello') // 'hello' 不存在的键值对，原样返回并反馈 warning 提示
  * ```
  */
-export const statusFactory = <T extends object>(initStatus: T) => {
+export const statusAdapter = <T extends object>(initStatus: T) => {
   return (status: keyof T | T[keyof T]) => {
     const sourceKey = status as keyof T;
     const target = initStatus[sourceKey];
