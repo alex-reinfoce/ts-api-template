@@ -8,7 +8,8 @@
     "test": "vitest --coverage run",
     "doc": "typedoc",
     "watch-doc": "onchange 'src/**/*.ts' -- npm run doc",
-    "watch-preview": "live-server doc"
+    "watch-preview": "live-server doc",
+    "postinstall": "npm run build && npm run doc"
   },
   "dependencies": {
     "concurrently": "^8.2.0",
